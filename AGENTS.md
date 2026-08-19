@@ -4,19 +4,10 @@
 
 当前是 windows powershell 环境，注意命令规范：
 
-在执行任何脚本、命令或处理环境交互时，所有 CLI 命令和脚本执行必须严格遵守以下 PowerShell 规则：
-
-1. 统一 Shell 环境：所有命令必须使用 PowerShell (推荐 pwsh 即 PowerShell 7 以上)。禁止使用 Windows 旧版 cmd.exe 或默认 powershell.exe。
-2. 转义字符约束：Bash 与 PowerShell 的转义规则不同，在编写跨平台脚本时，禁止混用 Shell 语法。
-3. 严格的错误处理：所有脚本首部必须包含 $ErrorActionPreference = 'Stop'，确保遇到错误时立即中断并报错，避免静默失败。
-4. 编码规范：脚本文件生成与读写必须强制指定 -Encoding UTF8，防止中文字符或特殊符号乱码。
-5. 管道与对象优先：在处理数据解析时，优先使用 PowerShell 的对象管道特性（如 Select-Object, Where-Object），避免过度依赖传统的文本截取。
-6. 在 Windows 执行 shell 命令时优先使用 PowerShell 7：
-    - 如果外层 shell 也是 PowerShell，传给 -Command 的脚本优先用单引号包住，避免 $变量 被外层提前展开。
-    - 不要在 PowerShell 字符串里用 Bash 风格的 \" 转义双引号；PowerShell 不按 Bash 规则处理它。
-    - rg 正则包含 |、(、)、\ 等字符时，用单引号包住 pattern，避免 | 被解析成 PowerShell 管道。
-    - 需要在 -Command 脚本中使用 $p/$i/$lines 等变量时，必须确保这些 $ 没有被外层 PowerShell展开：优先使用外层单引号，或用反引号转义 $。
-    - 尽量避免嵌套多层引号；复杂命令拆成更简单的单个命令执行。
+- 修改文件必须使用 Codex 的 `apply_patch` 工具，不能使用管道、重定向等写法。
+- 不要通过 PowerShell 管道、重定向或 `cmd /c` 调用 `apply_patch`。
+- 不要使用 PowerShell 的 `Set-Content`、`Out-File` 或脚本整体重写文件替代补丁修改。
+- 补丁内容包含中文时，仍然直接通过 `apply_patch` 工具传递，不要自行转码。
 
 ## 项目开发准则
 
