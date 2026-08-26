@@ -1,14 +1,5 @@
 # AGENTS.md
 
-## 开发环境规范
-
-当前是 windows powershell 环境，注意命令规范：
-
-- 修改文件必须使用 Codex 的 `apply_patch` 工具，不能使用管道、重定向等写法。
-- 不要通过 PowerShell 管道、重定向或 `cmd /c` 调用 `apply_patch`。
-- 不要使用 PowerShell 的 `Set-Content`、`Out-File` 或脚本整体重写文件替代补丁修改。
-- 补丁内容包含中文时，仍然直接通过 `apply_patch` 工具传递，不要自行转码。
-
 ## 项目开发准则
 
 1. 不需要进行代码测试，除非明确要求
