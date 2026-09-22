@@ -1,0 +1,3 @@
+[logging]
+# DEBUG < PERF < INFO < WARNING < ERROR < CRITICAL
+level = "INFO"

@@ -22,5 +22,5 @@ def main(argv: Sequence[str] | None = None) -> int:
 
     settings = Settings.from_env()
     logger = configure_logging(settings.log_level)
-    logger.info("application_started", extra={"environment": settings.environment})
+    logger.info("application_started environment=%s", settings.environment)
     return 0
