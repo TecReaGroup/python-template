@@ -25,6 +25,7 @@
 14. 对于给出的文件路径需要给出 [file_name](file_path:column_number) 的链接，方便直接跳转到对应的文件位置，注意前后空格
 15. 注意 .gitignore 的更新和 .gitkeep 的使用，尤其是 data 目录下的文件
 16. script/ 下的脚本结构需要先创建对于的目录，里面再是对应的脚本等所需文件
+17. 不要运行 make install 什么的，依赖什么的我自行安装，除非明确要求
 
 ## 工程原则（KISS / YAGNI / DRY / SOLID）
 
